@@ -1,21 +1,17 @@
 import { test, expect } from "fixtures/business.fixture";
-import { credentials } from "config/env";
 import { NOTIFICATIONS } from "data/salesPortal/notifications";
 import { generateProductData } from "data/salesPortal/products/generateProductData";
+import _ from "lodash";
 
-test.describe("[Sales Portal] [Products]", async () => {
-  test("Add new product", async ({
+test.describe("[Sales Portal] [Products]", () => {
+  //test with fixtures version 1
+  test("Product Details", async ({
+    loginAsAdmin,
     homePage,
-    loginPage,
     productsListPage,
     addNewProductPage,
   }) => {
-    await loginPage.open();
-    await loginPage.fillCredentials(credentials);
-    await loginPage.clickOnLoginButton();
-
-    await homePage.open();
-    await homePage.waitForOpened();
+    await loginAsAdmin();
     await homePage.clickOnViewModule("Products");
     await productsListPage.waitForOpened();
     await productsListPage.clickAddNewProduct();
@@ -30,10 +26,10 @@ test.describe("[Sales Portal] [Products]", async () => {
     await expect(
       productsListPage.tableRowByName(productData.name)
     ).toBeVisible();
+    await productsListPage.detailsButton(productData.name).click();
+    const { detailsModal } = productsListPage;
+    await detailsModal.waitForOpened();
+    const actual = await detailsModal.getData();
+    expect(_.omit(actual, ["createdOn"])).toEqual(productData);
   });
 });
-
-//locators !
-//waiterForPage !
-//product data generator
-//teardown

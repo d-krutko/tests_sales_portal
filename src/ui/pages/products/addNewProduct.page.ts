@@ -1,5 +1,5 @@
 import { IProduct } from "data/types/product.types";
-import { SalesPortalPage } from "../salesPortal.page";
+import { SalesPortalPage } from "ui/pages/salesPortal.page";
 
 export class AddNewProductPage extends SalesPortalPage {
   readonly title = this.page.locator("h2.page-title-text");
@@ -14,9 +14,12 @@ export class AddNewProductPage extends SalesPortalPage {
 
   async fillForm(productData: Partial<IProduct>) {
     if (productData.name) await this.nameInput.fill(productData.name);
-    if (productData.manufacturer) await this.manufacturerSelect.selectOption(productData.manufacturer);
-    if (productData.price) await this.priceInput.fill(productData.price.toString());
-    if (productData.amount) await this.amountInput.fill(productData.amount.toString());
+    if (productData.manufacturer)
+      await this.manufacturerSelect.selectOption(productData.manufacturer);
+    if (productData.price)
+      await this.priceInput.fill(productData.price.toString());
+    if (productData.amount)
+      await this.amountInput.fill(productData.amount.toString());
     if (productData.notes) await this.notesInput.fill(productData.notes);
   }
 
