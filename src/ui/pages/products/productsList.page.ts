@@ -15,7 +15,7 @@
 
 import { IProductInTable } from "data/types/product.types";
 import { SalesPortalPage } from "ui/pages/salesPortal.page";
-import { MANUFACTURERS } from "data/salesPortal/products/manufacturers";
+import { MANUFACTURERS } from "data/products/manufacturers";
 import { ProductDetailsModal } from "./details.modal";
 import { ProductDeleteModal } from "./delete.modal";
 export class ProductsListPage extends SalesPortalPage {

@@ -1,6 +1,6 @@
 import { IProductDetails } from "data/types/product.types";
 import { SalesPortalPage } from "ui/pages/salesPortal.page";
-import { MANUFACTURERS } from "data/salesPortal/products/manufacturers";
+import { MANUFACTURERS } from "data/products/manufacturers";
 
 export class ProductDetailsModal extends SalesPortalPage {
   readonly uniqueElement = this.page.locator("#ProductDetailsModal");
