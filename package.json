@@ -20,6 +20,7 @@
   "devDependencies": {
     "@eslint/js": "^9.36.0",
     "@playwright/test": "^1.55.1",
+    "@types/lodash": "^4.17.20",
     "@types/node": "^24.6.2",
     "eslint": "^9.36.0",
     "eslint-config-prettier": "^10.1.8",
@@ -31,7 +32,8 @@
   },
   "dependencies": {
     "@faker-js/faker": "^9.9.0",
-    "lint-staged": "^16.2.3"
+    "lint-staged": "^16.2.3",
+    "lodash": "^4.17.21"
   },
   "lint-staged": {
     "src/**/*.{ts,tsx,js,jsx}": [
