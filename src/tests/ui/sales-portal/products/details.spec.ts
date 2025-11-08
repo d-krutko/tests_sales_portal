@@ -1,6 +1,6 @@
 import { test, expect } from "fixtures/business.fixture";
-import { NOTIFICATIONS } from "data/salesPortal/notifications";
-import { generateProductData } from "data/salesPortal/products/generateProductData";
+import { NOTIFICATIONS } from "data/notifications";
+import { generateProductData } from "data/products/generateProductData";
 import _ from "lodash";
 
 test.describe("[Sales Portal] [Products]", () => {

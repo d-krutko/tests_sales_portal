@@ -1,4 +1,5 @@
-import { MANUFACTURERS } from "data/salesPortal/products/manufacturers";
+import { MANUFACTURERS } from "data/products/manufacturers";
+import { ID, IResponseFields } from "./core.types";
 
 export interface IProduct {
   name: string;
@@ -18,3 +19,12 @@ export interface IProductInTable
     ICreatedOn {}
 
 export interface IProductDetails extends Required<IProduct>, ICreatedOn {}
+
+export interface IProductFromResponse
+  extends Required<IProduct>,
+    ICreatedOn,
+    ID {}
+
+export interface IProductResponse extends IResponseFields {
+  Product: IProductFromResponse;
+}
