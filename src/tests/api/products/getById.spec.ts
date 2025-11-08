@@ -7,7 +7,7 @@ import { createProductSchema } from "data/schemas/products/create.schema";
 import { getProductSchema } from "data/schemas/products/get.schema";
 import { STATUS_CODES } from "data/statusCodes";
 import _ from "lodash";
-import { validateResponse } from "utils/validateResponse.utils";
+import { validateResponse } from "utils/validations/validateResponse.utils";
 
 const { baseURL, endpoints } = apiConfig;
 

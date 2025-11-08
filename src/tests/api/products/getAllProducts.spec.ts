@@ -18,7 +18,7 @@ import { STATUS_CODES } from "data/statusCodes";
 import { IProductFromResponse } from "data/types/product.types";
 import _ from "lodash";
 import { validateJsonSchema } from "utils/schema.utils";
-import { validateResponse } from "utils/validateResponse.utils";
+import { validateResponse } from "utils/validations/validateResponse.utils";
 
 const { baseURL, endpoints } = apiConfig;
 

@@ -6,7 +6,7 @@ import { loginSchema } from "data/schemas/login.schema";
 import { createProductSchema } from "data/schemas/products/create.schema";
 import { STATUS_CODES } from "data/statusCodes";
 import { IProductFromResponse } from "data/types/product.types";
-import { validateResponse } from "utils/validateResponse.utils";
+import { validateResponse } from "utils/validations/validateResponse.utils";
 
 const { baseURL, endpoints } = apiConfig;
 

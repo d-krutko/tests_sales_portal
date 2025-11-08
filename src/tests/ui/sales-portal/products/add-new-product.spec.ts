@@ -33,7 +33,21 @@ test.describe("[Sales Portal] [Products]", async () => {
   });
 });
 
-//locators !
-//waiterForPage !
-//product data generator
-//teardown
+// Используя DDT подход, напишите тест сьют для проверки эндпоинта создания продукта:
+//   - с позитивными проверками
+
+//   Используйте LoginApiService, ProductsApi, после каждого теста, где создастся продукт - удаляйте его.
+
+//   Требования:
+//   Name: обязательное, уникальное, Products's name should contain only 3-40 alphanumerical characters and one space between
+//   Manufacturer: обязательное
+//   Price: обязательное, Price should be in range 1-99999
+//   Amount: обязательное, Amount should be in range 0-999
+//   Notes: Notes should be in range 0-250 and without < or > symbols
+
+
+
+
+
+// Используя DDT подход, напишите тест сьют для проверки эндпоинта создания продукта:
+//   - с негативыми проверками
