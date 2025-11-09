@@ -1,7 +1,7 @@
 import { test, expect } from "fixtures/business.fixture";
 import { credentials } from "config/env";
-import { NOTIFICATIONS } from "data/salesPortal/notifications";
-import { generateProductData } from "data/salesPortal/products/generateProductData";
+import { NOTIFICATIONS } from "data/notifications";
+import { generateProductData } from "data/products/generateProductData";
 
 test.describe("[Sales Portal] [Products]", async () => {
   test("Add new product", async ({
