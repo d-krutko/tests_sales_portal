@@ -1,4 +1,4 @@
-import { IApiClient } from "api/apiClients/types";
+import { IApiClient } from "../apiClients/types";
 import { apiConfig } from "config/apiConfig";
 import { IRequestOptions } from "data/types/core.types";
 import {

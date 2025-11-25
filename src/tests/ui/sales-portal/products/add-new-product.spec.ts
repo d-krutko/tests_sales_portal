@@ -45,9 +45,5 @@ test.describe("[Sales Portal] [Products]", async () => {
 //   Amount: обязательное, Amount should be in range 0-999
 //   Notes: Notes should be in range 0-250 and without < or > symbols
 
-
-
-
-
 // Используя DDT подход, напишите тест сьют для проверки эндпоинта создания продукта:
 //   - с негативыми проверками

@@ -1,26 +1,10 @@
-// import { SalesPortalPage } from "ui/pages/products/salesPortal.page";
-
-// export class ProductsListPage extends SalesPortalPage {
-//   readonly productsPageTitle = this.page.locator("h2.fw-bold");
-//   readonly addNewProductButton = this.page.locator('[name="add-button"]');
-//   readonly tableRowByName = (productName: string) =>
-//     this.page.locator("table tbody tr", { has: this.page.locator("td", { hasText: productName }) });
-
-//   readonly uniqueElement = this.addNewProductButton;
-
-//   async clickAddNewProduct() {
-//     await this.addNewProductButton.click();
-//   }
-// }
-
-import { IProductInTable } from "data/types/product.types";
-import { SalesPortalPage } from "ui/pages/salesPortal.page";
+import { IProductInTable, ProductsTableHeader } from "data/types/product.types";
+import { SalesPortalPage } from "../salesPortal.page";
 import { MANUFACTURERS } from "data/products/manufacturers";
 import { ProductDetailsModal } from "./details.modal";
-import { ProductDeleteModal } from "./delete.modal";
+
 export class ProductsListPage extends SalesPortalPage {
   readonly detailsModal = new ProductDetailsModal(this.page);
-  readonly deleteModal = new ProductDeleteModal(this.page);
 
   readonly productsPageTitle = this.page.locator("h2.fw-bold");
   readonly addNewProductButton = this.page.locator('[name="add-button"]');
@@ -37,10 +21,25 @@ export class ProductsListPage extends SalesPortalPage {
     this.tableRowByName(productName).locator("td").nth(1);
   readonly manufacturerCell = (productName: string) =>
     this.tableRowByName(productName).locator("td").nth(2);
+  // readonly createdOnCell = (productName: string) => this.tableRowByName(productName).locator("td").nth(3);
   readonly createdOnCell = (nameOrIndex: string | number) =>
     typeof nameOrIndex === "string"
       ? this.tableRowByName(nameOrIndex).locator("td").nth(3)
       : this.tableRowByIndex(nameOrIndex).locator("td").nth(3);
+  readonly tableHeader = this.page.locator("thead th div[current]");
+  // readonly nameHeader = this.tableHeader.nth(0);
+  readonly tableHeaderNamed = (name: ProductsTableHeader) =>
+    this.tableHeader.filter({ hasText: name });
+
+  readonly tableHeaderArrow = (
+    name: ProductsTableHeader,
+    { direction }: { direction: "asc" | "desc" }
+  ) =>
+    this.page
+      .locator("thead th", {
+        has: this.page.locator("div[current]", { hasText: name }),
+      })
+      .locator(`i.${direction === "asc" ? "bi-arrow-down" : "bi-arrow-up"}`);
 
   readonly editButton = (productName: string) =>
     this.tableRowByName(productName).getByTitle("Edit");
@@ -108,5 +107,18 @@ export class ProductsListPage extends SalesPortalPage {
       });
     }
     return data;
+  }
+
+  async clickAction(
+    productName: string,
+    button: "edit" | "delete" | "details"
+  ) {
+    if (button === "edit") await this.editButton(productName).click();
+    if (button === "delete") await this.deleteButton(productName).click();
+    if (button === "details") await this.detailsButton(productName).click();
+  }
+
+  async clickTableHeader(name: ProductsTableHeader) {
+    await this.tableHeaderNamed(name).click();
   }
 }
